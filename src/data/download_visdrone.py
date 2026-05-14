@@ -31,12 +31,7 @@ def download_file(url: str, output_path: Path) -> None:
 
     total = int(response.headers.get("content-length", 0))
 
-    with output_path.open("wb") as file, tqdm(
-        total=total,
-        unit="B",
-        unit_scale=True,
-        desc=output_path.name,
-    ) as progress:
+    with output_path.open("wb") as file, tqdm(total=total, unit="B", unit_scale=True, desc=output_path.name) as progress:
         for chunk in response.iter_content(chunk_size=1024 * 1024):
             if chunk:
                 file.write(chunk)
@@ -56,26 +51,11 @@ def unzip_file(zip_path: Path, output_dir: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Download VisDrone DET dataset.")
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        required=True,
-        help="Directory where VisDrone raw data will be stored.",
-    )
-    parser.add_argument(
-        "--splits",
-        nargs="+",
-        default=["train", "val", "test"],
-        choices=["train", "val", "test"],
-        help="Dataset splits to download.",
-    )
-    parser.add_argument(
-        "--extract",
-        action="store_true",
-        help="Extract zip files after downloading.",
-    )
+    parser = argparse.ArgumentParser(description="Download VisDrone DET dataset.")
+
+    parser.add_argument("--output-dir", type=Path, required=True, help="Directory where VisDrone raw data will be stored.")
+    parser.add_argument("--splits", nargs="+", default=["train", "val", "test"], choices=["train", "val", "test"], help="Dataset splits to download.")
+    parser.add_argument("--extract", action="store_true", help="Extract zip files after downloading.")
 
     args = parser.parse_args()
 
