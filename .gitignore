@@ -1,0 +1,267 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env/
+.env.*
+!.env.example
+
+# Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Dependency/tool caches
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+coverage.xml
+htmlcov/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Optional: ignore executed notebooks
+# *.ipynb
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.local
+.env.dev
+.env.prod
+.env.test
+*.pem
+*.key
+*.crt
+*.p12
+*.json.key
+secrets/
+credentials/
+service-account*.json
+gcp-service-account*.json
+
+# =========================
+# Data
+# Keep data tracked by DVC, not Git
+# =========================
+data/raw/
+data/interim/
+data/processed/
+data/external/
+data/cache/
+datasets/
+
+# Keep directory structure if needed
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# DVC-tracked files should be committed
+!*.dvc
+!dvc.yaml
+!dvc.lock
+!.dvcignore
+
+# =========================
+# Models / Weights / Artifacts
+# =========================
+models/
+weights/
+checkpoints/
+artifacts/
+outputs/
+runs/
+results/
+
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.tflite
+*.pb
+*.h5
+*.keras
+*.mlmodel
+*.torchscript
+
+# =========================
+# YOLO / Ultralytics
+# =========================
+ultralytics/
+yolo_runs/
+runs/detect/
+runs/segment/
+runs/classify/
+runs/pose/
+runs/obb/
+*.cache
+labels.cache
+train.cache
+val.cache
+test.cache
+
+# =========================
+# MLflow
+# =========================
+mlruns/
+mlartifacts/
+mlflow.db
+
+# =========================
+# Experiment tracking
+# =========================
+wandb/
+.wandb/
+lightning_logs/
+tensorboard/
+events.out.tfevents.*
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+*.out
+*.err
+
+# =========================
+# Reports generated locally
+# =========================
+reports/figures/
+reports/html/
+reports/predictions/
+reports/evaluation/
+reports/profile/
+
+# Keep report templates/docs
+!reports/.gitkeep
+!reports/model_card.md
+
+# =========================
+# Inference uploads / temp files
+# =========================
+uploads/
+tmp/
+temp/
+predictions/
+inference_outputs/
+
+# =========================
+# FastAPI / Uvicorn
+# =========================
+*.pid
+gunicorn.pid
+uvicorn.pid
+
+# =========================
+# Docker
+# =========================
+.docker/
+docker-compose.override.yml
+
+# =========================
+# Kubernetes / Helm generated files
+# =========================
+*.kubeconfig
+kubeconfig
+.kube/
+helm-charts/**/charts/
+helm-charts/**/tmp/
+
+# =========================
+# Cloud / Terraform
+# =========================
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+terraform.tfvars.json
+crash.log
+crash.*.log
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# Large media files
+# Usually track via DVC instead
+# =========================
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+*.tiff
+*.webp
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Allow small demo assets in docs if needed
+!docs/assets/
+!docs/assets/**
+!README_assets/
+!README_assets/**
+
+# =========================
+# Config files that should be committed
+# =========================
+!configs/
+!configs/**
+!params.yaml
+!pyproject.toml
+!Makefile
+!Dockerfile
+!docker-compose.yml
+
+# =========================
+# Tests fixtures
+# =========================
+# Keep test samples small and committed
+!tests/fixtures/
+!tests/fixtures/**
