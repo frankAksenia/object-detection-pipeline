@@ -147,6 +147,8 @@ names:
         yaml_text += f"  {idx}: {name}\n"
 
     yaml_path = output_root / "visdrone.yaml"
+
+    yaml_path.parent.mkdir(parents=True, exist_ok=True)
     yaml_path.write_text(yaml_text, encoding="utf-8")
 
     print(f"Wrote dataset YAML: {yaml_path}")
@@ -175,6 +177,11 @@ def main() -> None:
     )
 
     args = parser.parse_args()
+
+    print(f"Raw root: {args.raw_root.resolve()}")
+    print(f"Output root: {args.output_root.resolve()}")
+    print(
+        f"Dataset YAML: {(args.yaml_path or args.output_root / 'visdrone.yaml').resolve()}")
 
     for split in args.splits:
         convert_split(
