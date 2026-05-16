@@ -117,6 +117,7 @@ results/
 *.keras
 *.mlmodel
 *.torchscript
+!models/.gitkeep
 
 # =========================
 # YOLO / Ultralytics
