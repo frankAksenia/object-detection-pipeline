@@ -1,0 +1,11 @@
+experiment_name: yolo26n_baseline
+
+model: yolo26n.pt
+data: /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml
+
+epochs: 50
+imgsz: 640
+batch: 16
+device: 0
+
+project: /content/drive/MyDrive/mlops-visdrone/mlruns
