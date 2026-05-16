@@ -1,0 +1,15 @@
+services:
+  visdrone-api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    container_name: visdrone-yolo-api
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: models/yolo26n_visdrone_baseline/best.pt
+      IMAGE_SIZE: 640
+      CONFIDENCE_THRESHOLD: 0.25
+      IOU_THRESHOLD: 0.7
+    volumes:
+      - ./models:/app/models:ro

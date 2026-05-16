@@ -4,7 +4,7 @@ torch==2.2.2
 torchvision==0.17.2
 torchaudio==2.2.2
 
-opencv-python-headless==4.13.0.92
+opencv-python-headless==4.10.0.84
 Pillow>=11.0,<13.0
 albumentations==2.0.8
 
