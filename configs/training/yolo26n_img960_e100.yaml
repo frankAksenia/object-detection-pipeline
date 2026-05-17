@@ -5,7 +5,7 @@ model_path: /content/drive/MyDrive/mlops-visdrone/runs/yolo26n_img960_e100/weigh
 
 data: /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml
 
-epochs: 70
+epochs: 60
 imgsz: 960
 batch: 8
 device: 0
