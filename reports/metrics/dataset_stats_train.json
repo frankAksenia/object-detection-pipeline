@@ -1,0 +1,119 @@
+{
+  "labels_dir": "/content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/labels/train",
+  "num_label_files": 6471,
+  "num_empty_label_files": 0,
+  "num_boxes": 343204,
+  "boxes_per_image": {
+    "mean": 53.037243084530985,
+    "median": 42.0,
+    "p90": 104.0,
+    "max": 902
+  },
+  "class_distribution": {
+    "pedestrian": {
+      "count": 79337,
+      "percentage": 23.116572067924615
+    },
+    "people": {
+      "count": 27059,
+      "percentage": 7.884232118506778
+    },
+    "bicycle": {
+      "count": 10480,
+      "percentage": 3.0535774641321196
+    },
+    "car": {
+      "count": 144866,
+      "percentage": 42.2098810037179
+    },
+    "van": {
+      "count": 24956,
+      "percentage": 7.271477022412326
+    },
+    "truck": {
+      "count": 12875,
+      "percentage": 3.7514131536928472
+    },
+    "tricycle": {
+      "count": 4812,
+      "percentage": 1.4020815608209696
+    },
+    "awning-tricycle": {
+      "count": 3246,
+      "percentage": 0.9457931725737463
+    },
+    "bus": {
+      "count": 5926,
+      "percentage": 1.7266698523327233
+    },
+    "motor": {
+      "count": 29647,
+      "percentage": 8.638302583885968
+    }
+  },
+  "class_imbalance": {
+    "max_class_count": 144866,
+    "min_class_count": 3246,
+    "max_to_min_ratio": 44.629081947011706
+  },
+  "box_area": {
+    "mean": 0.0015348091138405232,
+    "median": 0.000462296153,
+    "p10": 6.939034e-05,
+    "p25": 0.0001700025,
+    "p75": 0.001341562469,
+    "p90": 0.0036069720409000103
+  },
+  "box_width": {
+    "mean": 0.025179586015897253,
+    "median": 0.016701,
+    "p10": 0.005208,
+    "p90": 0.055
+  },
+  "box_height": {
+    "mean": 0.037655733100430064,
+    "median": 0.027829,
+    "p10": 0.011333,
+    "p90": 0.075817
+  },
+  "aspect_ratio_width_over_height": {
+    "mean": 0.7235704179387903,
+    "median": 0.589289732243306,
+    "p10": 0.26190142857142856,
+    "p90": 1.4166715277372688
+  },
+  "object_size_buckets": {
+    "tiny_area_lt_0.0001": 52188,
+    "small_area_0.0001_to_0.001": 184523,
+    "medium_area_0.001_to_0.01": 97763,
+    "large_area_gte_0.01": 8730
+  },
+  "object_size_bucket_percentages": {
+    "tiny_area_lt_0.0001": 15.206116478828918,
+    "small_area_0.0001_to_0.001": 53.76481626088274,
+    "medium_area_0.001_to_0.01": 28.485390613163013,
+    "large_area_gte_0.01": 2.543676647125325
+  },
+  "approx_object_size_pixels": {
+    "imgsz_640": {
+      "p10": 5.331255317840254,
+      "median": 13.76068691122649,
+      "p90": 38.43716623208121
+    },
+    "imgsz_960": {
+      "p10": 7.996882976760381,
+      "median": 20.641030366839736,
+      "p90": 57.655749348121816
+    },
+    "imgsz_1280": {
+      "p10": 10.662510635680508,
+      "median": 27.52137382245298,
+      "p90": 76.87433246416242
+    }
+  },
+  "quality_checks": {
+    "invalid_lines": 0,
+    "invalid_class_ids": 0,
+    "invalid_coordinates": 1
+  }
+}

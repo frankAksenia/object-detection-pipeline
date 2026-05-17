@@ -1,20 +1,18 @@
-experiment_name: yolo26n_img960_e100
+name: yolo26n_img960_e100
 
 model: yolo26n.pt
+model_path: /content/drive/MyDrive/mlops-visdrone/runs/yolo26n_img960_e100/weights/best.pt
+
 data: /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml
 
-epochs: 100
+epochs: 70
 imgsz: 960
 batch: 8
 device: 0
 workers: 2
+# Early stopping
 patience: 30
 
 project: /content/drive/MyDrive/mlops-visdrone/mlruns
-
-augmentation:
-  mosaic: 1.0
-  close_mosaic: 10
-  scale: 0.5
-  fliplr: 0.5
-  flipud: 0.0
+eval_project: /content/drive/MyDrive/mlops-visdrone/evaluation
+eval_name: yolo26n_img960_e100_val

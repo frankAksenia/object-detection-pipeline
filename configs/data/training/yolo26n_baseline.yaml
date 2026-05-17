@@ -1,6 +1,8 @@
-experiment_name: yolo26n_baseline
+name: yolo26n_baseline
 
 model: yolo26n.pt
+model_path: /content/drive/MyDrive/mlops-visdrone/runs/yolo26n_img960_e100/weights/best.pt
+
 data: /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml
 
 epochs: 50
@@ -9,3 +11,5 @@ batch: 16
 device: 0
 
 project: /content/drive/MyDrive/mlops-visdrone/mlruns
+eval_project: /content/drive/MyDrive/mlops-visdrone/evaluation
+eval_name: yolo26n_baseline_val
