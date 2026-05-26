@@ -15,7 +15,8 @@ The VisDrone DET annotation format is:
     [1] <bbox_top> y-coordinate
     [2] <bbox_width> 
     [3] <bbox_height>
-    [4] <score> confidence flag where 1 means the entry is an active ground-truth annotation, and 0 means it should be ignored
+    [4] <score> confidence flag where 1 means the entry
+      is an active ground-truth annotation, and 0 means it should be ignored
     [5] <object_category> class id map
     [6] <truncation>
     [7] <occlusion>
@@ -55,7 +56,9 @@ SPLIT_FOLDERS = {
 }
 
 
-def convert_annotation(annotation_path: Path, image_path: Path, output_label_path: Path) -> None:
+def convert_annotation(
+    annotation_path: Path, image_path: Path, output_label_path: Path
+) -> None:
     image = Image.open(image_path)
     image_width, image_height = image.size
 
@@ -155,8 +158,7 @@ names:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Convert VisDrone DET to YOLO format.")
+    parser = argparse.ArgumentParser(description="Convert VisDrone DET to YOLO format.")
     parser.add_argument(
         "--raw-root",
         type=Path,
@@ -180,8 +182,9 @@ def main() -> None:
 
     print(f"Raw root: {args.raw_root.resolve()}")
     print(f"Output root: {args.output_root.resolve()}")
-    print(
-        f"Dataset YAML: {(args.yaml_path or args.output_root / 'visdrone.yaml').resolve()}")
+
+    dataset_yaml_path = args.yaml_path or args.output_root / "visdrone.yaml"
+    print(f"Dataset YAML: {dataset_yaml_path.resolve()}")
 
     for split in args.splits:
         convert_split(

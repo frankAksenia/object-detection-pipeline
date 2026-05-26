@@ -6,7 +6,9 @@ from pathlib import Path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Collect experiment metrics into Markdown.")
+    parser = argparse.ArgumentParser(
+        description="Collect experiment metrics into Markdown."
+    )
     parser.add_argument(
         "--metrics-dir",
         type=Path,
@@ -39,7 +41,8 @@ def main() -> None:
     lines = [
         "# Experiment Results",
         "",
-        "| Experiment | Model | ImgSz | Epochs | Batch | mAP50-95 | mAP50 | mAP75 | Precision | Recall |",
+        "| Experiment | Model | ImgSz | Epochs "
+        "| Batch | mAP50-95 | mAP50 | mAP75 | Precision | Recall |",
         "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
 
@@ -70,4 +73,4 @@ if __name__ == "__main__":
 # -----------Colab usage example-----------
 # python src/training/collect_metrics.py \
 #   --metrics-dir reports/metrics \
-#   --output-md reports/experiments.md  
+#   --output-md reports/experiments.md

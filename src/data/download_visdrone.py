@@ -42,7 +42,10 @@ def download_file(url: str, output_path: Path) -> None:
 
     total = int(response.headers.get("content-length", 0))
 
-    with output_path.open("wb") as file, tqdm(total=total, unit="B", unit_scale=True, desc=output_path.name) as progress:
+    with (
+        output_path.open("wb") as file,
+        tqdm(total=total, unit="B", unit_scale=True, desc=output_path.name) as progress,
+    ):
         for chunk in response.iter_content(chunk_size=1024 * 1024):
             if chunk:
                 file.write(chunk)
@@ -65,16 +68,36 @@ def unzip_file(zip_path: Path, output_dir: Path, force: bool = False) -> None:
         zip_ref.extractall(output_dir)
 
     if not extraction_complete(expected_dir):
-        raise RuntimeError(f"Extraction did not produce expected images and annotations in {expected_dir}")
+        raise RuntimeError(
+            f"""Extraction did not produce expected 
+            images and annotations in {expected_dir}"""
+        )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Download VisDrone DET dataset.")
 
-    parser.add_argument("--output-dir", type=Path, required=True, help="Directory where VisDrone raw data will be stored.")
-    parser.add_argument("--splits", nargs="+", default=["train", "val", "test"], choices=["train", "val", "test"], help="Dataset splits to download.")
-    parser.add_argument("--extract", action="store_true", help="Extract zip files after downloading.")
-    parser.add_argument("--force-extract", action="store_true", help="Remove and re-extract split folders even if they look complete.")
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Directory where VisDrone raw data will be stored.",
+    )
+    parser.add_argument(
+        "--splits",
+        nargs="+",
+        default=["train", "val", "test"],
+        choices=["train", "val", "test"],
+        help="Dataset splits to download.",
+    )
+    parser.add_argument(
+        "--extract", action="store_true", help="Extract zip files after downloading."
+    )
+    parser.add_argument(
+        "--force-extract",
+        action="store_true",
+        help="Remove and re-extract split folders even if they look complete.",
+    )
 
     args = parser.parse_args()
 
@@ -89,7 +112,9 @@ def main() -> None:
         download_file(url=url, output_path=zip_path)
 
         if args.extract:
-            unzip_file(zip_path=zip_path, output_dir=extracted_dir, force=args.force_extract)
+            unzip_file(
+                zip_path=zip_path, output_dir=extracted_dir, force=args.force_extract
+            )
 
     print("VisDrone download complete.")
 

@@ -7,7 +7,6 @@ from pathlib import Path
 
 import numpy as np
 
-
 CLASS_NAMES = {
     0: "pedestrian",
     1: "people",
@@ -108,8 +107,12 @@ def compute_yolo_label_stats(labels_dir: Path) -> dict:
 
     object_size_buckets = {
         "tiny_area_lt_0.0001": int(np.sum(areas < 0.0001)) if total_boxes else 0,
-        "small_area_0.0001_to_0.001": int(np.sum((areas >= 0.0001) & (areas < 0.001))) if total_boxes else 0,
-        "medium_area_0.001_to_0.01": int(np.sum((areas >= 0.001) & (areas < 0.01))) if total_boxes else 0,
+        "small_area_0.0001_to_0.001": (
+            int(np.sum((areas >= 0.0001) & (areas < 0.001))) if total_boxes else 0
+        ),
+        "medium_area_0.001_to_0.01": (
+            int(np.sum((areas >= 0.001) & (areas < 0.01))) if total_boxes else 0
+        ),
         "large_area_gte_0.01": int(np.sum(areas >= 0.01)) if total_boxes else 0,
     }
 
@@ -124,8 +127,14 @@ def compute_yolo_label_stats(labels_dir: Path) -> dict:
         "num_empty_label_files": empty_label_files,
         "num_boxes": total_boxes,
         "boxes_per_image": {
-            "mean": float(boxes_per_image_arr.mean()) if len(boxes_per_image_arr) else 0.0,
-            "median": float(np.median(boxes_per_image_arr)) if len(boxes_per_image_arr) else 0.0,
+            "mean": (
+                float(boxes_per_image_arr.mean()) if len(boxes_per_image_arr) else 0.0
+            ),
+            "median": (
+                float(np.median(boxes_per_image_arr))
+                if len(boxes_per_image_arr)
+                else 0.0
+            ),
             "p90": safe_percentile(boxes_per_image_arr, 90),
             "max": int(boxes_per_image_arr.max()) if len(boxes_per_image_arr) else 0,
         },
@@ -133,7 +142,9 @@ def compute_yolo_label_stats(labels_dir: Path) -> dict:
         "class_imbalance": {
             "max_class_count": int(max_class_count),
             "min_class_count": int(min_class_count),
-            "max_to_min_ratio": float(max_class_count / min_class_count) if min_class_count else None,
+            "max_to_min_ratio": (
+                float(max_class_count / min_class_count) if min_class_count else None
+            ),
         },
         "box_area": {
             "mean": float(areas.mean()) if total_boxes else 0.0,
@@ -165,19 +176,49 @@ def compute_yolo_label_stats(labels_dir: Path) -> dict:
         "object_size_bucket_percentages": object_size_bucket_percentages,
         "approx_object_size_pixels": {
             "imgsz_640": {
-                "p10": float(np.sqrt(safe_percentile(areas, 10)) * 640) if total_boxes else 0.0,
-                "median": float(np.sqrt(np.median(areas)) * 640) if total_boxes else 0.0,
-                "p90": float(np.sqrt(safe_percentile(areas, 90)) * 640) if total_boxes else 0.0,
+                "p10": (
+                    float(np.sqrt(safe_percentile(areas, 10)) * 640)
+                    if total_boxes
+                    else 0.0
+                ),
+                "median": (
+                    float(np.sqrt(np.median(areas)) * 640) if total_boxes else 0.0
+                ),
+                "p90": (
+                    float(np.sqrt(safe_percentile(areas, 90)) * 640)
+                    if total_boxes
+                    else 0.0
+                ),
             },
             "imgsz_960": {
-                "p10": float(np.sqrt(safe_percentile(areas, 10)) * 960) if total_boxes else 0.0,
-                "median": float(np.sqrt(np.median(areas)) * 960) if total_boxes else 0.0,
-                "p90": float(np.sqrt(safe_percentile(areas, 90)) * 960) if total_boxes else 0.0,
+                "p10": (
+                    float(np.sqrt(safe_percentile(areas, 10)) * 960)
+                    if total_boxes
+                    else 0.0
+                ),
+                "median": (
+                    float(np.sqrt(np.median(areas)) * 960) if total_boxes else 0.0
+                ),
+                "p90": (
+                    float(np.sqrt(safe_percentile(areas, 90)) * 960)
+                    if total_boxes
+                    else 0.0
+                ),
             },
             "imgsz_1280": {
-                "p10": float(np.sqrt(safe_percentile(areas, 10)) * 1280) if total_boxes else 0.0,
-                "median": float(np.sqrt(np.median(areas)) * 1280) if total_boxes else 0.0,
-                "p90": float(np.sqrt(safe_percentile(areas, 90)) * 1280) if total_boxes else 0.0,
+                "p10": (
+                    float(np.sqrt(safe_percentile(areas, 10)) * 1280)
+                    if total_boxes
+                    else 0.0
+                ),
+                "median": (
+                    float(np.sqrt(np.median(areas)) * 1280) if total_boxes else 0.0
+                ),
+                "p90": (
+                    float(np.sqrt(safe_percentile(areas, 90)) * 1280)
+                    if total_boxes
+                    else 0.0
+                ),
             },
         },
         "quality_checks": {

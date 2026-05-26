@@ -1,0 +1,16 @@
+from fastapi.testclient import TestClient
+
+from src.serving.app import app
+
+
+def test_health_endpoint_without_model_load(monkeypatch):
+
+    with TestClient(app) as client:
+        response = client.get("/health")
+
+    assert response.status_code == 200
+
+    body = response.json()
+    assert body["status"] == "ok"
+    assert "model_loaded" in body
+    assert "model_path" in body

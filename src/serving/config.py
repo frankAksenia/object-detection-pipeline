@@ -15,6 +15,8 @@ class Settings(BaseSettings):
     confidence_threshold: float = 0.25
     iou_threshold: float = 0.7
 
+    skip_model_load: bool = False
+
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore",

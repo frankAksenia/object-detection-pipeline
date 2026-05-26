@@ -19,8 +19,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional path to training/evaluation config YAML.",
     )
 
-    parser.add_argument("--model", type=Path, required=False, help="Path to trained model.")
-    parser.add_argument("--data", type=Path, required=False, help="Path to dataset YAML.")
+    parser.add_argument(
+        "--model", type=Path, required=False, help="Path to trained model."
+    )
+    parser.add_argument(
+        "--data", type=Path, required=False, help="Path to dataset YAML."
+    )
     parser.add_argument("--imgsz", type=int, default=None)
     parser.add_argument("--batch", type=int, default=None)
     parser.add_argument("--device", type=str, default=None)
@@ -79,13 +83,17 @@ def main() -> None:
     name = get_value(args.name, config, "eval_name", config.get("name"))
 
     if model_path is None:
-        raise ValueError("Missing required value: --model or config field 'model_path'.")
+        raise ValueError(
+            "Missing required value: --model or config field 'model_path'."
+        )
 
     if data is None:
         raise ValueError("Missing required value: --data or config field 'data'.")
 
     if project is None:
-        raise ValueError("Missing required value: --project or config field 'eval_project'.")
+        raise ValueError(
+            "Missing required value: --project or config field 'eval_project'."
+        )
 
     if name is None:
         raise ValueError("Missing required value: --name or config field 'eval_name'.")
@@ -132,19 +140,25 @@ if __name__ == "__main__":
 #  Colab usage example:
 #
 # python src/training/evaluate.py \
-#   --model /content/drive/MyDrive/mlops-visdrone/runs/yolo26n_img640_baseline/weights/best.pt \
-#   --data /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml \
+#   --model /content/drive/MyDrive/mlops-visdrone/
+#           runs/yolo26n_img640_baseline/weights/best.pt \
+#   --data /content/drive/MyDrive/mlops-visdrone/
+#           data/processed/visdrone-yolo/visdrone.yaml \
 #   --imgsz 640 \
 #   --batch 16 \
 #   --device 0 \
-#   --project /content/drive/MyDrive/mlops-visdrone/evaluation \
+#   --project /content/drive/MyDrive/
+#           mlops-visdrone/evaluation \
 #   --name yolo26n_img640_baseline_val \
-#   --metrics-output /content/drive/MyDrive/mlops-visdrone/reports/metrics/yolo26n_img640_baseline.json \
+#   --metrics-output /content/drive/MyDrive/
+#       mlops-visdrone/reports/metrics/
+#       img640_baseline.json \
 #   --exist-ok
 #
 # or with config YAML:
 #
 #     python src/training/evaluate.py \
 #   --config configs/training/yolo26n_img960_e100.yaml \
-#   --metrics-output /content/drive/MyDrive/mlops-visdrone/reports/metrics/yolo26n_img960_e100.json \
+#   --metrics-output /content/drive/MyDrive/
+#       mlops-visdrone/reports/metrics/yolo26n_img960_e100.json \
 #   --exist-ok

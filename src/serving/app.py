@@ -11,7 +11,8 @@ from src.serving.routes import router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    model_service.load()
+    if not settings.skip_model_load:
+        model_service.load()
     yield
 
 

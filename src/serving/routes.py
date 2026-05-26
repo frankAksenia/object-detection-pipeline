@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from io import BytesIO
+from typing import Annotated
 
 from fastapi import APIRouter, File, HTTPException, UploadFile
 from PIL import Image
@@ -39,7 +40,9 @@ def model_info() -> ModelInfoResponse:
 
 
 @router.post("/predict/image", response_model=PredictionResponse)
-async def predict_image(file: UploadFile = File(...)) -> PredictionResponse:
+async def predict_image(
+    file: Annotated[UploadFile, File(...)],
+) -> PredictionResponse:
     if not model_service.is_loaded():
         raise HTTPException(status_code=503, detail="Model is not loaded.")
 
@@ -75,8 +78,7 @@ async def predict_image(file: UploadFile = File(...)) -> PredictionResponse:
             detections.append(
                 Detection(
                     class_id=class_id,
-                    class_name=model_service.class_names.get(
-                        class_id, "unknown"),
+                    class_name=model_service.class_names.get(class_id, "unknown"),
                     confidence=confidence,
                     bbox_xyxy=bbox_xyxy,
                 )

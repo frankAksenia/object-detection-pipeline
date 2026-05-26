@@ -15,7 +15,8 @@ def parse_args() -> argparse.Namespace:
         "--config",
         type=Path,
         default=None,
-        help="Optional path to training config YAML. If provided, config values are used as defaults.",
+        help="Optional path to training config YAML. "
+        "If provided, config values are used as defaults.",
     )
 
     parser.add_argument(
@@ -143,7 +144,8 @@ if __name__ == "__main__":
 #  Colab usage example:
 #
 #     python src/training/train.py \
-#   --data /content/drive/MyDrive/mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml \
+#   --data /content/drive/MyDrive/
+#   mlops-visdrone/data/processed/visdrone-yolo/visdrone.yaml \
 #   --model yolo26n.pt \
 #   --epochs 50 \
 #   --imgsz 640 \
